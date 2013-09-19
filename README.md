@@ -10,5 +10,5 @@ is made.
 
 This is a fun project, not a serious one, so don't expect to find tests, until 
 maybe later, once I've got my head around how the concepts of Loaders, Providers 
-and Services.
+and Services work.
 
