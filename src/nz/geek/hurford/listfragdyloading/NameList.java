@@ -1,8 +1,6 @@
 
 package nz.geek.hurford.listfragdyloading;
 
-import nz.geek.hurford.listfragdyloading.provider.ItemListDBHelper;
-import nz.geek.hurford.listfragdyloading.provider.DataProvider;
 import android.app.ListFragment;
 import android.app.LoaderManager;
 import android.content.CursorLoader;
@@ -10,38 +8,32 @@ import android.content.Loader;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.SimpleCursorAdapter;
+import android.widget.CursorAdapter;
+
+import nz.geek.hurford.listfragdyloading.provider.DataProvider;
+import nz.geek.hurford.listfragdyloading.provider.ItemListDBHelper;
 
 public class NameList extends ListFragment implements LoaderManager.LoaderCallbacks<Cursor> {
 
-    SimpleCursorAdapter mAdapter;
+    CursorAdapter mAdapter;
+    
+    //private static final String TAG = "NameList";
 
-    @Override
+    /*@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
-        // View view = inflater.inflate(android.R.layout.simple_list_item_1,
-        // container, false);
-        // return view;
 
+        //View view = inflater.inflate(android.R.layout.list_content, container, true);
+        
+        //return view;
         return super.onCreateView(inflater, container, savedInstanceState);
-    }
+    }*/
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
-        // TODO Auto-generated method stub
         super.onActivityCreated(savedInstanceState);
 
-        mAdapter = new SimpleCursorAdapter(getActivity(),
-                android.R.layout.simple_list_item_2, null,
-                new String[] {
-                        ItemListDBHelper.COL_TITLE, ItemListDBHelper.COL_DESCRIPTION
-                },
-                new int[] {
-                        android.R.id.text1, android.R.id.text2
-                }, 0);
+        mAdapter = new MyCursorAdapter(getActivity());
         setListAdapter(mAdapter);
 
         setListShown(false);

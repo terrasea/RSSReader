@@ -9,8 +9,8 @@
     tools:context=".MainActivity" >
 
     <fragment android:name="nz.geek.hurford.listfragdyloading.NameList"
-        android:id="@+id/list"
-        android:layout_width="0dp"
+        android:id="@+id/name"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
 </RelativeLayout>

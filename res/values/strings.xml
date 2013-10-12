@@ -4,5 +4,6 @@
     <string name="app_name">ListFragDyLoading</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
+    <string name="local_service_started">Service Started</string>
 
 </resources>

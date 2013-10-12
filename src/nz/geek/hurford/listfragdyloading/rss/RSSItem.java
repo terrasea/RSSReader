@@ -1,6 +1,6 @@
 package nz.geek.hurford.listfragdyloading.rss;
 
-public class RSSItem {
+public class RSSItem implements Item {
 	private String title;
 	private String link;
 	private String description;

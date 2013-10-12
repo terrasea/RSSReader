@@ -3,7 +3,6 @@ package nz.geek.hurford.listfragdyloading.provider;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.database.sqlite.SQLiteQueryBuilder;
 
 public class ItemListDBHelper extends SQLiteOpenHelper {
 

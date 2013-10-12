@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.listfragdyloading"
+    package="nz.geek.hurford.listfragdyloading"
     android:versionCode="1"
     android:versionName="1.0" >
 
     <uses-sdk
         android:minSdkVersion="16"
         android:targetSdkVersion="18" />
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -26,6 +27,7 @@
             android:name="nz.geek.hurford.listfragdyloading.provider.DataProvider"
             android:authorities="nz.geek.hurford.listfragdyloading.provider"
             android:exported="false" />
+        <service android:name="nz.geek.hurford.listfragdyloading.service.RSSService"/>
     </application>
 
 </manifest>

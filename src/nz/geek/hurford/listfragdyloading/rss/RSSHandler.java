@@ -1,22 +1,30 @@
 package nz.geek.hurford.listfragdyloading.rss;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
+import java.util.List;
+
 public class RSSHandler extends DefaultHandler {
 	private StringBuilder content = null;
-	private ArrayList<RSSItem> items = new ArrayList<RSSItem>();
-	private RSSItem item = null;
+	private List<Item> items = null;
+	private Item item = null;
+	private ItemFactory itemFactory = null;
+
+	//private final static String TAG = "RSSHandler";
+	
+	public RSSHandler(List<Item> items, ItemFactory itemFactory) {
+	    this.items = items;
+	    this.itemFactory = itemFactory;
+	    item = itemFactory.newItem();
+	}
 	
 	
 	@Override
 	public void characters(char[] ch, int start, int length)
 			throws SAXException {
-		content.append(ch);
+		content.append(ch, start, length);
 		super.characters(ch, start, length);
 	}
 
@@ -33,8 +41,9 @@ public class RSSHandler extends DefaultHandler {
 		} else if(localName.equalsIgnoreCase("item")) {
 			items.add(item);
 			item = null;
-			item = new RSSItem();
+			item = itemFactory.newItem();
 		}
+		
 		super.endElement(uri, localName, qName);
 	}
 
@@ -49,12 +58,14 @@ public class RSSHandler extends DefaultHandler {
 	@Override
 	public void startElement(String uri, String localName, String qName,
 			Attributes attributes) throws SAXException {
+	    content = null;
 		content = new StringBuilder();
+
 		super.startElement(uri, localName, qName, attributes);
 	}
 
 	
-	public List<RSSItem> getItems() {
+	public List<Item> getItems() {
 		return items;
 	}
 }
